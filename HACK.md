@@ -113,6 +113,7 @@ kubectl create secret docker-registry acr-secret \
 #  * Added benefit of showing the true blast radius of a proposed change in the git diff very obvious
 #  * Remove a level of indirection. Moves towards a cluster being completely self-contained: good for these cloud-baked -> airgapped scenarios
 # Writing an optional patch per-cluster would also work - but folks seem to find Kustomize/patches very confusing
+# Turns out baking this into the rendered output isn't possible without a design change - render doesn't have access to the Cluster object. This is by design. Prior to now, we had no reason to consider cluster-level variables when writing to the gitops repo. We could probably render on a "per encryption key" basis, which wouldn't be incorrect - but would be confusing imo
 
 # Moderately lazy thought #2:
 # Is this a more general "something specific about this cluster/label needs to be changed" problem?
