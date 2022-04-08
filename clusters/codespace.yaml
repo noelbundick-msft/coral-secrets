@@ -1,0 +1,8 @@
+kind: Cluster
+metadata:
+  name: codespace
+  labels:
+    type: codespace
+spec:
+  environments:
+    - dev
