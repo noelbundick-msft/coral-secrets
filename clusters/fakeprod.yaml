@@ -1,0 +1,8 @@
+kind: Cluster
+metadata:
+  name: fakeprod
+  labels:
+    type: aks
+spec:
+  environments:
+    - prod
