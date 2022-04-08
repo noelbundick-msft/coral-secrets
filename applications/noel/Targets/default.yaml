@@ -1,0 +1,6 @@
+kind: Target
+metadata:
+  name: default
+spec:
+  workspace: noel
+  selector: {}
