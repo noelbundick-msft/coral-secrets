@@ -3,6 +3,7 @@ metadata:
   name: codespace
   labels:
     type: codespace
+    SOPS_PGP_FP: 7DB6EF589A3D43370E06AF4D13C5845206955A89
 spec:
   environments:
     - dev

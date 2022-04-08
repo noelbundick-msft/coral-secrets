@@ -49,6 +49,7 @@ spec:
   environments:
     - dev
 EOF
+git add ./clusters/*.yaml
 git commit -m "Add a cluster"
 git push
 

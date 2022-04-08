@@ -3,6 +3,7 @@ metadata:
   name: fakeprod
   labels:
     type: aks
+    SOPS_PGP_FP: 5F3CFA12F427D24555990C6659D488A7318723E3
 spec:
   environments:
     - prod
