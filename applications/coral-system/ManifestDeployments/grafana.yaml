@@ -1,0 +1,9 @@
+kind: ManifestDeployment
+metadata:
+  name: grafana
+spec:
+  workspace: coral-system
+  manifests: grafana
+  targets:
+    all:
+      clusters: all

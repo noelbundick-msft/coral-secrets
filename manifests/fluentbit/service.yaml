@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluentbit-metrics
+  namespace: fluentbit
+spec:
+  selector:
+    app.kubernetes.io/instance: fluentbit
+  type: ClusterIP
+  ports:
+    - name: tcp
+      port: 5170
+      targetPort: 5170

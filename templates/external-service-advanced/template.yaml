@@ -1,0 +1,14 @@
+manifests: ./deploy
+parameters:
+  cpu:
+    default: 1
+  image: {}
+  fqdn: {}
+  healthEndpoint: 
+    default: /healthcheck
+  metricsEndpoint: 
+    default: /metrics
+  memory:
+    default: 1G
+  port: {}
+  replicas: {}

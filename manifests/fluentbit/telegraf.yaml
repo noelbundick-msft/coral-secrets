@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegraf
+  namespace: fluentbit
+spec:
+  selector:
+    matchLabels:
+      app: telegraf
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: telegraf
+    spec:
+      containers:
+        - image: telegraf:1.21.2
+          name: telegraf
+          volumeMounts:
+            - mountPath: /etc/telegraf/telegraf.conf
+              name: telegraf-config
+              subPath: telegraf.conf
+              readOnly: true
+      volumes:
+        - name: telegraf-config
+          configMap:
+            name: telegraf-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telegraf-config
+  namespace: fluentbit
+data:
+  telegraf.conf: |+
+    # Telegraf Configuration
+    ###############################################################################
+    #                            OUTPUT PLUGINS                                   #
+    ###############################################################################
+    [[outputs.socket_writer]]
+      address = "tcp://fluentbit-metrics.fluentbit.svc.cluster.local:5170"
+      data_format = "json"
+      
+    ###############################################################################
+    #                            INPUT PLUGINS                                    #
+    ###############################################################################
+    [[inputs.prometheus]]
+      urls = ['http://prometheus-server.prometheus.svc.cluster.local/federate?match[]={workspace!=""}']
+      monitor_kubernetes_pods = false
+      tagexclude = ["host", "instance", "job", "pod_template_hash", "url"]
+ 

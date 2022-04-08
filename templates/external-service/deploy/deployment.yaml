@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{coral.app}}-deployment
+  namespace: {{coral.workspace}}-{{coral.app}}-{{coral.deployment}}
+  labels:
+  {{#coral.labels}}
+    {{key}}: {{value}}
+  {{/coral.labels}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{coral.app}}
+  template:
+    metadata:
+      labels:
+        {{#coral.labels}}
+        {{key}}: {{value}}
+        {{/coral.labels}}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "{{port}}"       
+    spec:
+      containers:
+      - name: {{coral.app}}
+        image: {{image}}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{port}}
+        resources:
+          limits:
+            cpu: 1
+            memory: 1G
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: {{port}}
+          initialDelaySeconds: 10
+          periodSeconds: 10

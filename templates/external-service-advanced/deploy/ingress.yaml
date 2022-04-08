@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{coral.app}}-ingress
+  namespace: {{coral.workspace}}-{{coral.app}}-{{coral.deployment}}
+spec:
+  rules:
+  - host: {{fqdn}}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{coral.app}}
+            port:
+              number: {{port}}

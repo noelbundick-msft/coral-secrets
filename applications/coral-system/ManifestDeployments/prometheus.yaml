@@ -1,0 +1,9 @@
+kind: ManifestDeployment
+metadata:
+  name: prometheus
+spec:
+  workspace: coral-system
+  manifests: prometheus
+  targets:
+    all:
+      clusters: all

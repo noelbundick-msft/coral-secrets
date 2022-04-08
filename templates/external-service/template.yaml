@@ -1,0 +1,6 @@
+manifests: ./deploy
+parameters:
+  image: {}
+  port: {}
+  domainSuffix:
+    default: example.com
