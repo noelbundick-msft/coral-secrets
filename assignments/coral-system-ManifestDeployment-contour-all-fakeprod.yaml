@@ -1,0 +1,10 @@
+kind: ApplicationAssignment
+metadata:
+  name: coral-system-ManifestDeployment-contour-all-fakeprod
+spec:
+  application:
+    kind: ManifestDeployment
+    name: contour
+    workspace: coral-system
+    target: all
+  cluster: fakeprod

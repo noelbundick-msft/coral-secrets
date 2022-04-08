@@ -1,0 +1,10 @@
+kind: ApplicationAssignment
+metadata:
+  name: coral-system-ManifestDeployment-prometheus-all-fakeprod
+spec:
+  application:
+    kind: ManifestDeployment
+    name: prometheus
+    workspace: coral-system
+    target: all
+  cluster: fakeprod
