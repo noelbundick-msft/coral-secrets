@@ -1,0 +1,10 @@
+kind: ApplicationAssignment
+metadata:
+  name: coral-system-ManifestDeployment-grafana-all-codespace
+spec:
+  application:
+    kind: ManifestDeployment
+    name: grafana
+    workspace: coral-system
+    target: all
+  cluster: codespace
