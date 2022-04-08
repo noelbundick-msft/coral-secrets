@@ -15,7 +15,7 @@ concurrency: transform
 
 env:
   # TODO: Replace this with your own repository
-  GITOPS_REPO: <owner>/<repository>
+  GITOPS_REPO: noelbundick-msft/coral-secrets-gitops
   CORAL_LOG_FILE: coral.log
   AZURE_LOG_ANALYTICS_KEY: ${{ secrets.AZURE_LOG_ANALYTICS_KEY }}
   AZURE_LOG_ANALYTICS_WORKSPACE_ID: ${{ secrets.AZURE_LOG_ANALYTICS_WORKSPACE_ID }}
