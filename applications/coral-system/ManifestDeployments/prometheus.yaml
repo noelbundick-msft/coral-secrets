@@ -7,3 +7,5 @@ spec:
   targets:
     all:
       clusters: all
+      patches:
+        - labels-coral-system.yaml
